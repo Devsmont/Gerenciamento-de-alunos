@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+					
+public class Program
+{
+		static void Main(string[] args)
+		{
+		    bool Start_Men = false;
+			
+			int opcao;
+			
+			Aluno dado_aluno = new Aluno();
+			do
+			{
+				
+	     Console.Clear();	
+				
+		Console.BackgroundColor = ConsoleColor.Blue;
+		Console.WriteLine("AULA");
+		
+		Console.BackgroundColor = ConsoleColor.Black;
+		Console.WriteLine("Escolha uma opção:");
+		Console.WriteLine("1_ Lista de todos os alunos");
+		Console.WriteLine("2_ Cadastro de alunos");
+		Console.WriteLine("3_ Edição de Notas de um aluno");
+		Console.WriteLine("4_ Edição de Faltas de um aluno");
+		Console.WriteLine("5_ Apagar aluno");
+		Console.WriteLine("6_ Sair");
+		
+		bool Dig_Voltar = false;
+		do
+		{
+			Dig_Voltar = int.TryParse(Console.ReadLine(), out opcao);
+			
+			if
+				(opcao <1 || opcao > 7 || Dig_Voltar == false)
+			{
+				Console.BackgroundColor = ConsoleColor.Red;
+			    Console.WriteLine("Opção inesistente");
+				Console.BackgroundColor = ConsoleColor.Black;
+					
+					Dig_Voltar = false;
+			}
+		}while (!Dig_Voltar); 
+				
+		 switch (opcao)
+                {
+                    case 1:
+                        dado_aluno.listar();
+                        break;
+
+                    case 2:
+                        dado_aluno.inserir();
+                        break;
+
+			        case 3:
+                       dado_aluno.editar_nota();
+                        break;
+				 
+				    case 4:
+                         dado_aluno.editar_falta();
+                        break;
+
+                    case 5:
+                         dado_aluno.remover();
+                        break;
+				 
+				    case 6:
+                        Console.WriteLine("Vai sair do sistema.");
+                        break;
+				  
+				 
+                }		
+		
+		 Console.WriteLine("Deseja retornar à pagina inicial? S/N" );
+	     Start_Men = (Console.ReadLine().ToUpper() == "S") ? true : false;
+		
+	} while (Start_Men);
+	
+	Console.WriteLine("Fim");
+	
+	Console.ReadKey();
+	
+	
+	
+		
+		
+	
+	}
+}
